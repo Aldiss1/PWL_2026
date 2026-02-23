@@ -10,6 +10,8 @@ public function hello(){
 return('Hello World');
 }
 public function greeting(){
-return view('blog.hello', ['name' => 'Aldi Surya Saputra']);
+return view('blog.hello')
+->with('name','Aldi Surya Saputra')
+->with('occupation','Mahasiswa');
 }
 }
