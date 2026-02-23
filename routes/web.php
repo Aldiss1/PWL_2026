@@ -5,16 +5,22 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PhotoController;
 
-// Single Action Controllers (tanpa __invoke)
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/articles/{id}', [ArticleController::class, 'show']);
 
-// WelcomeController
+Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+]);
+    
+Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
+]);
+
 Route::get('/hello', [WelcomeController::class, 'hello']);
 
-// Other Routes
 Route::get('/world', function () {
     return 'World';
 });
