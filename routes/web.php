@@ -40,6 +40,4 @@ Route::get('/user/{name?}', function ($name = 'John') {
     return 'Nama saya ' . $name;
 });
 
-Route::get('/greeting', function () {
-return view('blog.hello', ['name' => 'Aldi Surya Saputra']);
-});
+Route::get('/greeting', [WelcomeController::class,'greeting']);
